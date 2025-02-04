@@ -1,0 +1,64 @@
+// Variables essentielles
+$gradient-primary: linear-gradient(to right, #8b5cf6, #d946ef);
+
+// Animations
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// Styles de base optimisés
+.parallax {
+  transform: translateZ(-1px) scale(2);
+}
+
+.feature-item {
+  @apply flex gap-4 items-start;
+  
+  .feature-icon {
+    @apply p-3 rounded-full bg-violet-100 text-violet-600 transition-all duration-300;
+    
+    &:hover {
+      @apply bg-violet-600 text-white;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.detailed-feature {
+  @apply flex gap-4 items-start p-6 rounded-xl transition-all duration-300;
+  background: linear-gradient(to right, rgba(139, 92, 246, 0.03), rgba(217, 70, 239, 0.03));
+  
+  &:hover {
+    @apply border-violet-200;
+    transform: translateX(10px);
+  }
+}
+
+.package-button {
+  @apply block w-full py-4 rounded-lg font-semibold text-white transition-all duration-300;
+  background: $gradient-primary;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(139, 92, 246, 0.3);
+  }
+}
+
+.pack-image {
+  @apply relative transition-all duration-500;
+  
+  &:hover {
+    transform: scale(1.02);
+    
+    &::after { opacity: 0.2; }
+  }
+  
+  &::after {
+    @apply absolute inset-0 rounded-xl;
+    content: '';
+    background: $gradient-primary;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+}

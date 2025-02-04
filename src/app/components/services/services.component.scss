@@ -1,0 +1,12 @@
+// Variables
+$gradient-primary: linear-gradient(to right, #8b5cf6, #d946ef);
+
+// Service card styles
+.service-card {
+  @apply bg-white rounded-2xl p-8 shadow-lg transition-all duration-300;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+}

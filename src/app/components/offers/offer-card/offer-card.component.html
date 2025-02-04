@@ -1,0 +1,38 @@
+<div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative group"
+     (click)="select.emit()">
+  <!-- Tag populaire/nouveau -->
+  <div *ngIf="offer.tagline" 
+       class="absolute -top-4 right-4 md:right-8 text-white px-3 md:px-4 py-1 md:py-2 rounded-full text-sm font-bold shadow-lg"
+       [class.bg-gradient-to-r]="true"
+       [class]="offer.tagBg || 'from-violet-600 to-fuchsia-600'">
+    {{ offer.tagline }}
+  </div>
+
+  <!-- En-tête -->
+  <div class="mb-6 md:mb-8">
+    <h2 class="text-2xl md:text-3xl font-bold text-violet-600 flex items-center gap-3 mb-2">
+      {{ offer.name }} <span class="text-3xl md:text-4xl">{{ offer.emoji }}</span>
+    </h2>
+    <p class="text-base md:text-lg text-gray-600">{{ offer.description }}</p>
+  </div>
+
+  <!-- Prix -->
+  <div class="bg-violet-50 rounded-xl p-4 md:p-6 mb-6 md:mb-8">
+    <div class="space-y-3 md:space-y-4">
+      <div *ngFor="let option of offer.pricing.options" 
+           class="flex justify-between items-center">
+        <span class="font-medium text-sm md:text-base">{{ option.name }}</span>
+        <span class="text-violet-600 font-bold text-sm md:text-base">{{ option.value }}</span>
+      </div>
+      <div *ngIf="offer.pricing.note" 
+           class="text-xs md:text-sm text-violet-600 bg-violet-100 p-2 md:p-3 rounded-lg">
+        {{ offer.pricing.note }}
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="text-center text-sm text-violet-600 mt-4">
+    Cliquez pour plus de détails ✨
+  </div>
+</div>

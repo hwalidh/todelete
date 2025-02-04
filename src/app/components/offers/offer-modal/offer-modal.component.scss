@@ -1,0 +1,19 @@
+:host {
+  display: contents;
+}
+
+.modal-content {
+  @apply max-w-2xl mx-auto;
+}
+
+.feature-list {
+  @apply space-y-3;
+  
+  li {
+    @apply flex items-center text-gray-700;
+    
+    &:hover {
+      @apply text-violet-600;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-32 pb-24">
+  <div class="container mx-auto px-4">
+    <!-- En-tête -->
+    <div class="text-center mb-16">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-fuchsia-600">
+          Nos Offres 🚀
+        </span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+        Choisis l'offre qui te correspond le mieux !
+      </p>
+    </div>
+
+    <!-- Grille des offres -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-7xl mx-auto">
+      <app-offer-card 
+        *ngFor="let offer of offers" 
+        [offer]="offer"
+        (select)="openOfferModal(offer)"
+        class="cursor-pointer transform hover:-translate-y-1 transition-all duration-300">
+      </app-offer-card>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <app-offer-modal
+    *ngIf="selectedOffer"
+    [offer]="selectedOffer"
+    [isOpen]="!!selectedOffer"
+    (close)="closeOfferModal()">
+  </app-offer-modal>
+</div>

@@ -1,0 +1,43 @@
+// Variables
+$gradient-primary: linear-gradient(to right, #8b5cf6, #d946ef);
+
+// Testimonial card styles
+.testimonial-card {
+  @apply bg-gray-50 rounded-xl p-6 shadow-md transition-all duration-300;
+  
+  &:hover {
+    @apply shadow-lg;
+    transform: translateY(-5px);
+  }
+}
+
+// Avatar styles
+.avatar {
+  @apply w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center text-xl;
+  
+  &:hover {
+    animation: pulse 2s infinite;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+// CTA section
+.cta-section {
+  @apply py-24;
+  background: $gradient-primary;
+  
+  .cta-button {
+    @apply inline-flex items-center px-8 py-4 bg-white text-violet-600 font-semibold rounded-lg;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

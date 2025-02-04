@@ -1,0 +1,60 @@
+<div class="space-y-6">
+  <h2 class="text-2xl font-bold text-gray-800 text-center mb-8">
+    <ng-container [ngSwitch]="config.id">
+      <ng-container *ngSwitchCase="'travel'">
+        Parle-nous de ton petit nid ! 🏠<br>
+        <span class="text-lg font-normal text-gray-600">Plus on en sait, mieux on peut t'aider à le rentabiliser !</span>
+      </ng-container>
+      <ng-container *ngSwitchCase="'business'">
+        Parlons business ! 💼<br>
+        <span class="text-lg font-normal text-gray-600">On va booster tes revenus ensemble !</span>
+      </ng-container>
+      <ng-container *ngSwitchCase="'serenity'">
+        Ton bien mérite le meilleur ! 🏡<br>
+        <span class="text-lg font-normal text-gray-600">Dis-nous tout pour qu'on puisse te garantir le meilleur loyer !</span>
+      </ng-container>
+    </ng-container>
+  </h2>
+  
+  <div class="grid grid-cols-2 gap-4">
+    <ng-container *ngFor="let field of config.formFields">
+      <div class="floating-input" [class.col-span-2]="field.type === 'text'">
+        <ng-container [ngSwitch]="field.type">
+          <!-- Select Input -->
+          <select *ngSwitchCase="'select'" 
+                  [formControlName]="field.name" 
+                  class="form-input peer">
+            <option value="">Sélectionner</option>
+            <option *ngFor="let option of field.options" [value]="option.id">
+              {{option.name}}
+            </option>
+          </select>
+
+          <!-- Date Input -->
+          <input *ngSwitchCase="'date'"
+                 type="date" 
+                 [formControlName]="field.name" 
+                 class="form-input peer" 
+                 placeholder=" ">
+
+          <!-- Number Input -->
+          <input *ngSwitchCase="'number'"
+                 type="number" 
+                 [formControlName]="field.name" 
+                 class="form-input peer" 
+                 placeholder=" ">
+
+          <!-- Text Input (default) -->
+          <input *ngSwitchDefault
+                 type="text" 
+                 [formControlName]="field.name" 
+                 class="form-input peer" 
+                 placeholder=" ">
+        </ng-container>
+
+        <label class="floating-label">{{ field.label }}</label>
+        <div class="input-emoji">{{ field.emoji }}</div>
+      </div>
+    </ng-container>
+  </div>
+</div>

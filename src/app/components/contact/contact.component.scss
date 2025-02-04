@@ -1,0 +1,80 @@
+// Variables
+$primary: #8b5cf6;
+$secondary: #d946ef;
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes success-appear {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes success-check {
+  from { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+.animate-success-appear {
+  animation: success-appear 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-success-check {
+  animation: success-check 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.project-card {
+  @apply transition-transform duration-300;
+  
+  &:hover, &.selected {
+    @apply -translate-y-1;
+    .project-icon { @apply scale-110; }
+  }
+}
+
+.floating-input {
+  @apply relative mb-6;
+  
+  .form-input {
+    @apply w-full px-6 py-4 rounded-xl bg-white border-2 border-gray-200 
+           transition-colors duration-300 pr-12 focus:border-violet-500 
+           focus:ring focus:ring-violet-200;
+    
+    &:focus, &:not(:placeholder-shown) {
+      & + .floating-label {
+        @apply text-violet-600 bg-white;
+        transform: translateY(-1.75rem) scale(0.85);
+      }
+    }
+  }
+  
+  .floating-label {
+    @apply absolute left-4 top-4 text-gray-500 px-2 transition-all duration-300 
+           pointer-events-none origin-left;
+  }
+  
+  .input-emoji {
+    @apply absolute right-4 top-1/2 -translate-y-1/2 text-xl;
+  }
+}
+
+.next-button, .prev-button, .submit-button {
+  @apply px-8 py-3 rounded-xl font-semibold transition-all duration-300 
+         disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.next-button, .submit-button {
+  background: linear-gradient(to right, $primary, $secondary);
+  @apply text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-200;
+}
+
+.prev-button {
+  @apply text-gray-600 bg-gray-100 hover:bg-gray-200;
+}

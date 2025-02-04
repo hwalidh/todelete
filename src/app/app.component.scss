@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.calendly-button {
+  @apply flex items-center px-6 py-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 
+         text-white rounded-full font-semibold shadow-lg hover:-translate-y-1 
+         transition-all duration-300 hover:shadow-xl;
+  
+  .button-arrow {
+    @apply w-4 h-4 ml-2 transition-transform duration-300;
+  }
+  
+  &:hover {
+    .button-arrow {
+      @apply translate-x-1;
+    }
+  }
+}
